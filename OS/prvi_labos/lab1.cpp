@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
+#include <math.h>
 
 /* funkcije za obradu signala, navedene ispod main-a */
 void obradi_dogadjaj(int sig);
@@ -35,15 +36,26 @@ int main() {
  sigaction(SIGINT, &sig, NULL);
  printf("Program s PID=%ld krenuo s radom\n", (long) getpid());
 
- /* moj dio koda */
- obrada = fopen("./obrada.txt", "r+");
- status = fopen("./status.txt", "r+");
+ /* moj dio koda - čitanje*/
+ obrada = fopen("./obrada.txt", "r");
+ status = fopen("./status.txt", "r");
  fscanf(status, "%d\n", &broj);
+ fclose(status);
  
  if (broj == 0) 
-    while (fscanf(obrada, "%d\n", &broj) != EOF);
- 
+    while (fscanf(obrada, "%d\n", &broj) != EOF)
+       broj = sqrt(broj);
+ fclose(obrada);
+
+ /*ponovno otvaranje datoteka - pisanje*/
+ obrada = fopen("./obrada.txt", "r+");
+ status = fopen("./status.txt", "w");
  fprintf(status,"0\n");
+ fclose(status);
+
+ /*prolaz kroz pbrada.txt do kraja dokumenta da se ne prepiše preko već postojećih podataka*/
+ int tmp;
+ while (fscanf(obrada, "%d\n", &tmp) != EOF);
 
  /* beskonačna petlja, rip */
  while(zavrsi) {
@@ -54,16 +66,16 @@ int main() {
 
  printf("Program s PID=%ld zavrsio s radom\n", (long) getpid());
  fclose(obrada);
- fclose(status);
  return 0;
 }
 
 void obradi_dogadjaj(int sig) {
- printf("Broj: %d", broj);
+ printf("Broj: %d\n", broj);
 }
 
 void obradi_sigterm(int sig) {
  printf("SIGTERMinator will be back\n");
+ status = fopen("./status.txt", "w");
  fprintf(status, "%d\n",  broj);
  zavrsi = 0;
 }
@@ -71,7 +83,6 @@ void obradi_sigterm(int sig) {
 void obradi_sigint(int sig) {
  printf("YOU SHALL NOT WORK ANYMORE!\n");
  fclose(obrada);
- fclose(status);
  exit(1);
 }
 
