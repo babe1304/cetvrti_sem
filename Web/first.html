@@ -1,43 +1,71 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-    <title>Naslov</title>
+    <title>Jako nekvalitetna stranica</title>
     <meta charset="UTF-8"/>
     <meta name="description" content="Prva stranica"/>
     <meta name="application-name" content="Stranica"/>
     <style>
         p {color:blue; text-align: center;}
+        #deb {color: green; font-family:'Times New Roman', Times, serif;}
+        .mutto {color: chartreuse;}
     </style>
 </head>
 
 <body>
     <h1>Pijani</h1>
-    <span>Gare i Badel najbolji duo<br>
+    <span class="mutto">Gare i Badel najbolji duo<br>
         Juice i votka najgori par za razbijanje
     </span>
-    <h1><del>Debeli</del></h1>
+    <h1 id="deb"><del>Debeli</del></h1>
+
+    <form action="/mojserver.php" method="get">
+        <label>Username: <input type="text" name="username"> </label><br>
+        <label>Password: &nbsp;<input type="password" name="password"></label><br>
+        <fieldset>
+            <legend>Odaberi junfera</legend>
+            <label><input type="radio" name="role" value="cupic">Čupić</label><br>
+            <label><input type="radio" name="role" value="kala">Kalafatić</label>
+        </fieldset>
+        <label><input type="checkbox" name="bitch" checked disabled>No bitches?</label><br>
+        <select name="something">
+            <option>koka</option>
+            <option>mdma</option>
+        </select>
+        <input type="submit" name="submit" value="Pošalji">
+    </form>
+
     <hr/>
-    <div style="align-items: center;">
-        <img src="cupic.jpeg" style="height: 300px;"/>
-        <img src="kala.jpeg" style="height: 300px;"/>
-        <p style="color: aliceblue; text-align: left;">Average Ferko enjoyeri</p>
-    </div>
+    <figure>
+        <img src="cupic.jpeg" style="height: 200px; width: 600px;"/>
+        <img src="kala.jpeg" style="height: 200px; width: 600px;"/>
+        <figcaption class="mutto">Average Ferko enjoyeri</figcaption>
+        <a href="https://www.fer.unizg.hr/marko.cupic">Nemoj kliknuti ovaj link!</a>
+    </figure>
     <hr/>
     Volim piti:
     <ul style="list-style-type: lower-roman;">
         <li>Badel</li>
-        <li>Jaeger</li>
+        <li>Jeger</li>
         <li>Votka</li>
         <li>Viski</li>
     </ul>
     <table style="border: 2px solid blue;border-collapse: collapse; color: darkgoldenrod;">
-        <caption>Mutto rejting</caption>
+        <caption class="mutto">Mutto rejting</caption>
         <tr><th>Alkohol</th><th>Gare</th><th>Kuje</th></tr>
         <tr><td>Badel</td><td>Marlboro</td><td>Mervan</td></tr>
     </table>
     <div class="Ivica" style="color: lawngreen">
         <h2>☠️Bootychki☠️</h2>
         <p>Majmun</p>
+        <span>
+            Volim grad koji teče.
+            <span>U Rijeci pada previše kiše</span>
+        </span>
+        <span>
+            <pre><em>Pozdrav iz Rijeke
+            Volim piti gemišt</em></pre>
+        </span>
         <p style="color: beige;">Gmaz</p>
     </div>
 </body>
