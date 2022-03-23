@@ -9,6 +9,7 @@ class Automat():
         self.prihvatS = prihvatS
         self.poc = poc
         self.funkPr = funkPr
+        self.start()
 
     def start(self):
         for i, niz in enumerate(self.nizovi):
@@ -71,4 +72,3 @@ if __name__ == "__main__":
         funkPr[tuple(ulaz.split(","))] = list(izlaz.split(","))
     
     automat = Automat(ulazniNizovi, skupStanja, abcd, prihvatS, poc, funkPr)
-    automat.start()
