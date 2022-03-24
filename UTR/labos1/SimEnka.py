@@ -2,14 +2,22 @@ import sys
 
 class Automat():
 
-    def __init__(self, nizovi, skupStanja, abcd, prihvatS, poc, funkPr):
-        self.nizovi = nizovi
-        self.skupStanja = skupStanja
-        self.abcd = abcd
-        self.prihvatS = prihvatS
-        self.poc = poc
-        self.funkPr = funkPr
+    def __init__(self):
+        self.procitaj()
         self.start()
+
+    def procitaj(self):
+        self.nizovi = input().split("|")
+        self.skupStanja = input().split(",")
+        self.abcd = input().split(",")
+        self.prihvatS = input().split(",")
+        self.poc = str(input()).split(",")
+        self.funkPr = dict()
+    
+        for prijelaz in sys.stdin.readlines():
+            ulaz, izlaz = prijelaz.rstrip().split("->")
+            self.funkPr[tuple(ulaz.split(","))] = list(izlaz.split(","))
+    
 
     def start(self):
         for i, niz in enumerate(self.nizovi):
@@ -46,10 +54,8 @@ class Automat():
         sljStanja = list()
 
         for stanje in trStanja:
-
             if stanje == "#":
                 continue
-
             if tuple([stanje, slovo]) in self.funkPr.keys():
                 for moguceStanje in self.funkPr.get(tuple([stanje, slovo])):
                     if moguceStanje == "#":
@@ -60,15 +66,4 @@ class Automat():
         return sljStanja if len(sljStanja) != 0 else ["#"]
 
 if __name__ == "__main__":
-    ulazniNizovi = input().split("|")
-    skupStanja = input().split(",")
-    abcd = input().split(",")
-    prihvatS = input().split(",")
-    poc = str(input()).split(",")
-    funkPr = dict()
-    
-    for prijelaz in sys.stdin.readlines():
-        ulaz, izlaz = prijelaz.rstrip().split("->")
-        funkPr[tuple(ulaz.split(","))] = list(izlaz.split(","))
-    
-    automat = Automat(ulazniNizovi, skupStanja, abcd, prihvatS, poc, funkPr)
+    automat = Automat()

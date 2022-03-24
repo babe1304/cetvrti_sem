@@ -171,12 +171,12 @@
 
   .flower-img {
     object-fit: cover;
-    height: 220px;
-    width: 220px;
+    height: 200px;
+    width: 200px;
   }
 
   .container-grid-imgs {
-    align-self: center;
+    text-align: center;
     grid-template-columns: 32.5% 32.5% 32.5%;
   }
   
@@ -189,7 +189,8 @@
       display: block;
     }
   }
-  
+
+  /*ovo*/
   .img-caption {
     font-size: 2em;
   }
