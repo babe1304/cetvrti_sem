@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>2. predavanje</title>
+        <style>
+            body {
+                background-color: white;
+            }
+
+            div {
+               border: 1px solid black;
+            }
+
+            .div1 {
+                position: static;    
+            }
+
+            .div2 {
+                position: relative;
+                top: 200px;
+                left: 100px;
+            }
+
+            .div3 {
+                position: absolute;
+                top: 0px;
+            }
+
+            .div4 {
+                position: fixed;
+                left: 110px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="parent">
+            <div class="div1">Prvi div</div>
+            <div class="div1">Drugi div</div>
+            <div class="div2">Treci div</div>
+            <div class="div3">Cetvrti div</div>
+            <div class="div4">Peti div</div>
+        </div>
+    </body>
+</html>
