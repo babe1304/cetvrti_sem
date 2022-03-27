@@ -3,7 +3,7 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 
-for i in {1..33} # broj ispitnih primjera
+for i in {1..53} # broj ispitnih primjera
 do
     # generiraj ime direktorija s vodecom nulom
     dir=$(printf "%0*d\n" 2 $i)

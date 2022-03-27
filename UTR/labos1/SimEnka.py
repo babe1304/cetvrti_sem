@@ -36,7 +36,7 @@ class Automat():
 
     def provjeri_e_okruzenje(self, trStanja, svaStanja=[]):
         svaStanja = trStanja if len(svaStanja) == 0 else svaStanja
-
+        trStanja.sort()
         for stanje in trStanja:
             if stanje == "#":
                 continue
