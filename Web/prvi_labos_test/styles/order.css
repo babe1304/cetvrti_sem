@@ -1,0 +1,70 @@
+  .grid-img-item {
+    text-align: center;
+  }
+
+  .flower-img {
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+  }
+
+  .container-grid-imgs {
+    justify-content: center;
+    grid-template-columns: 33vw 33vw 33vw;
+    grid-gap: 0px;
+  }
+  
+  .img-caption {
+    font-size: 2em;
+  }  
+
+  /*----------------------------------*/
+
+  .flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flex-container > * {
+    margin-left: 7px;
+    margin-right: 7px;
+  }
+
+  .number {
+    font-weight: bold;
+    color: #ab4f8b;
+    font-size: 0.8em;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px solid #e0aacd;
+    width: 1.5em;
+    height: 1.5em;
+    margin: auto 1em;
+  }
+
+  .status-link-container {
+    align-content: center;
+  }
+
+  .cover-line {
+    background-color: #e0aacd;
+    border: 1px solid #e0aacd;
+    width: 20px;
+  }
+
+  .circle-separator {
+    width: 20px;
+    border-radius: 50%;
+  }
+
+  .link-new {
+    color: #ab4f8b;
+    text-decoration: none;
+    outline: none;
+  }
+
+  .current {
+    text-decoration: underline;
+  }

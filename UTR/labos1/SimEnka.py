@@ -17,7 +17,6 @@ class Automat():
         for prijelaz in sys.stdin.readlines():
             ulaz, izlaz = prijelaz.rstrip().split("->")
             self.funkPr[tuple(ulaz.split(","))] = list(izlaz.split(","))
-    
 
     def start(self):
         for i, niz in enumerate(self.nizovi):
