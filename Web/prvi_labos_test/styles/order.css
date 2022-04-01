@@ -68,3 +68,29 @@
   .current {
     text-decoration: underline;
   }
+
+  /*--------------order_2-------*/
+
+  .container-order {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .order-box {
+    padding: 10px;
+    padding-left: 3em;
+    width: 9em;
+    height: 1.5em;
+    border-right: 0.3em solid #ab4f8b;
+    border-top-right-radius: 3em;
+    border-bottom-right-radius: 3em;
+    border-bottom-left-radius: 0.5em;
+    border-top-left-radius: 0.5em;
+    color:#ab4f8b;
+  }
+
+  .selected {
+    color: white;
+    background-color: #e0aacd;
+  }

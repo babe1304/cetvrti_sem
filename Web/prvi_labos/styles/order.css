@@ -17,3 +17,57 @@
   .img-caption {
     font-size: 2em;
   }  
+
+  /*--------------------------------*/
+  .emphasized-text {
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  .form-container {
+    margin-top: 10px;
+  }
+
+  .delivery-text {
+    padding: 1em 1em;
+    font-size: medium;
+    text-align: center;
+  }
+
+  .container-flex {
+    padding: 1em;
+    height: 2em;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .selection {
+    width: 40%;
+  }
+
+  .input {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  input[type="submit"] {
+    background-color:#ab4f8b;
+    border-radius: 0.3em;
+    color: white;
+    border-style: none;
+    width: 8em;
+  }
+
+  input[type="submit"]:hover {
+    width: 8.5em;
+    height: 2.1em;
+  }
+
+  select:focus {
+    background-color: #e0aacd;
+    color: white;
+  }
+
+  input[type="date"]:focus {
+    background-color: #e0aacd;
+  }
