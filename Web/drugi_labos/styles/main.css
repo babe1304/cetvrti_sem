@@ -117,6 +117,14 @@
   font-style: normal;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
 .primary-color-bg {
   background-color: #f7f7f7;
 }
@@ -203,6 +211,10 @@
   justify-content: center;
 }
 
+.hidden {
+  display: none;
+}
+
 .link {
   color: #e0aacd;
   text-decoration: none;
@@ -212,7 +224,7 @@
 .menu {
   display: flex;
   flex-direction: row;
-  align-items: center ;
+  align-items: center;
   justify-content: center;
 }
 
@@ -296,6 +308,14 @@
   background-image: url("../images/flower-icon.png");
 }
 
+.infobox-truck {
+  background-image: url("../images/truck.png");
+}
+
+.infobox-scale {
+  background-image: url("../images/scale.png");
+}
+
 .infobox-title {
   margin-top: 0.2em;
   margin-bottom: 0.5em;
@@ -333,36 +353,100 @@
   margin-bottom: 20px;
 }
 
-.floating-social-sidebar {
-  position: fixed;
-  right: 0%;
-  top: 50%;
-  transform: translate(0%, -50%);
-  display: grid;
-  grid-template-rows: auto auto auto;
+.cart {
+  text-align: left;
+  max-width: 300px;
+  height: 400px;
 }
 
-.floating-social-sidebar .tooltip {
-  visibility: hidden;
-  background-color: white;
-  border: 1px solid black;
+.cart-item,
+.cart-header {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.cart-item-title,
+.cart-header-title {
+  flex: 1;
+  color: #ab4f8b;
+}
+
+.cart-item-quantity {
+  flex: 1;
+  max-width: 30px;
+}
+
+.cart-header {
+  border-bottom: 1px solid #e0aacd;
+  color: #ab4f8b;
+  font-weight: bold;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-.floating-social-sidebar:hover .tooltip {
-  visibility: visible;
+.cart-item-price {
+  flex: 1;
+}
+
+.cart-btn {
+  cursor: pointer;
+  background-image: url(../images/cart-icon.svg);
+  width: 30px;
+  height: 30px;
+  margin: auto;
+}
+
+.cart-btn:hover {
+  opacity: 0.3;
+}
+
+.cart-menu img {
+  opacity: 0.5;
+}
+
+.cart-menu:hover img, .cart-menu-active img {
   opacity: 1;
 }
 
-.social-img {
-  width: 5em;
-  height: 5em;
-  justify-content: center;
+.cart-menu-status {
+  display: flex;
 }
 
-html {
-  height: 100%;
+.cart-menu-status div {
+  padding: 2px;
 }
-body {
-  min-height: 100%;
+
+.photo-box {
+  text-align: center;
+}
+
+.photo-box-title {
+  font-size: 30px;
+}
+
+.photo-box-image {
+  width: 200px;
+  height: 200px;
+  background-color: #e0aacd;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+  object-fit: cover;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 1em;
+}
+
+.link:hover {
+  color: #ab4f8b;
+  text-decoration: none;
+}
+
+.link-active {
+  text-decoration: underline;
+  color: #ab4f8b;
 }
