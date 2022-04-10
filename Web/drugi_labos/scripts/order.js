@@ -1,7 +1,10 @@
 function addToCart(id) {
-	// INSERT CODE HERE --> PRIPREMA
-
-	// END INSERT --> PRIPREMA
+	//-------------------------------------
+	if (!localStorage.getItem(id)) localStorage.setItem(id, 0);
+	let itemCount = localStorage.getItem(id);
+	itemCount++; 
+	localStorage.setItem(id, itemCount);
+	//-------------------------------------
 	refreshCartItems();
 }
 
@@ -35,11 +38,13 @@ let addCategories = async function (data) {
 			productElement = product.querySelector('.photo-box > .photo-box-title');
 			productElement.textContent = products[j].name;
 
-			productElement = product.querySelector('.photo-box > .cart-btn');
-			productElement.setAttribute("onclick", addToCart); 
-
 			productElement = product.querySelector('.photo-box');
 			productElement.setAttribute("data-id", products[j].id); 
+
+			productElement = product.querySelector('.photo-box > .cart-btn');
+			productElement.onclick = function() {
+				addToCart(products[j].id);
+			}
 			
 			gallery.appendChild(product);
 		}
