@@ -1,10 +1,10 @@
 function refreshCartItems(){
 	//---------------------------------
+	let items = JSON.parse(localStorage.getItem("cart-items"));
 	let itemCountEl = document.getElementById("cart-items");
 	let count = 0;
-
-	for (let i = 0; i < localStorage.length; i++) 
-		if (localStorage.getItem(localStorage.key(i))) count += parseInt(localStorage.getItem(localStorage.key(i)));
+	
+	if (items) for (let item of Object.values(items)) count += parseInt(item); 
 	
 	itemCountEl.textContent = count;
 	//---------------------------------

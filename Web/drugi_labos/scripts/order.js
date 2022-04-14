@@ -1,9 +1,10 @@
 function addToCart(id) {
 	//-------------------------------------
-	if (!localStorage.getItem(id)) localStorage.setItem(id, 0);
-	let itemCount = localStorage.getItem(id);
-	itemCount++; 
-	localStorage.setItem(id, itemCount);
+	let item = JSON.parse(localStorage.getItem("cart-items"));
+	if (!item) item = {};
+	if (!item[id]) item[id] = 0;
+	item[id] += 1;
+	localStorage.setItem("cart-items", JSON.stringify(item));
 	//-------------------------------------
 	refreshCartItems();
 }
