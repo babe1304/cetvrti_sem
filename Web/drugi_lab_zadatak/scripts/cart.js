@@ -35,7 +35,7 @@ function getCart() {
                 
             //INSERT CODE HERE - Zadatak
             let cijena = cartItem.querySelector('.cart-item-price');
-            cijena.textContent = cart[id] * product.price;
+            cijena.textContent = product.price + " kn";
             //END INSERT CODE - Zadatak
 
             container.appendChild(cartItem);

@@ -67,7 +67,7 @@ class Automat():
 
     def eliminiraj(self):
         nova_prihvatS = [novo_stanje for novo_stanje in self.prihvatS if novo_stanje in self.skupStanja]
-        self.prihvatS = nova_prihvatS
+        self.prihvatS = sorted(nova_prihvatS)
         novi_prijelazi = {prijelaz : sljznak for prijelaz in self.funkPr.keys() if prijelaz[0] in self.skupStanja for sljznak in self.funkPr.get(prijelaz)}
         self.funkPr = novi_prijelazi
 

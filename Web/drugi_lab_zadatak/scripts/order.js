@@ -18,8 +18,7 @@ let getData = async function () {
 let addCategories = async function (data) {
 
 	//-----------------------------labos
-	let categoriesFetch = await fetch("https://web1lab2.herokuapp.com/categories");
-	let categories = await categoriesFetch.json();
+	let categories = await fetch("https://web1lab2.herokuapp.com/categories").then(res => res.json());
 	//-----------------------------labos
 
 	let main = document.querySelector('main');
