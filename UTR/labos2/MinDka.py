@@ -21,8 +21,7 @@ class Automat():
     def start(self):
         self.skupStanja = sorted(list(self.nadi_dohvatljive()))
         self.eliminiraj()
-        istovjetnaS = self.nadi_istovjetne()
-        self.obradi(istovjetnaS)
+        self.obradi(self.nadi_istovjetne())
         print(*self.skupStanja, sep=",")
         print(*self.abcd, sep=",")
         print(*self.prihvatS, sep=",")
@@ -44,7 +43,7 @@ class Automat():
                 else:
                     slj_grupiranja_stanja.append(set(lista))
             grupirana_istovjetna = slj_grupiranja_stanja
-        grupirana_istovjetna = list(dict.fromkeys([tuple(sorted(stanja)) for stanja in grupirana_istovjetna]))
+        grupirana_istovjetna = [tuple(sorted(stanja)) for stanja in grupirana_istovjetna]
         for grupa in grupirana_istovjetna:
             zam_stanje = grupa[0]
             for stanje in grupa[1:]:
