@@ -48,9 +48,7 @@ class Automat():
                 print("fail|0")
                 return
             print(stanje, "".join(stog[::-1]), sep="#", end="|") if stog else print(stanje, "$", sep="#", end="|")
-        if stanje not in self.prihvatS and stog:
-            znakStoga = stog.pop()
-            stanje, znakStoga, stog = self.provjeri_epsilon(stanje, znakStoga, stog) 
+        stanje, znakStoga, stog = self.provjeri_epsilon(stanje, stog.pop(), stog) if stanje not in self.prihvatS and stog else [stanje, znakStoga, stog]
         print(f"{1 if stanje in self.prihvatS else 0}")
         return
             

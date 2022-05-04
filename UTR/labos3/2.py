@@ -1,5 +1,4 @@
 import sys
-from time import process_time_ns
 
 class Automat():
 
@@ -40,10 +39,7 @@ class Automat():
         print(stanje, "".join(stog), sep="#", end="|")
 
         for slovo in niz:
-            if not stog:
-                print("fail|0")
-                return
-            znakStoga = stog.pop()
+            znakStoga = stog.pop() if stog else "$"
             stanje, znakStoga, stog = self.provjeri_epsilon(stanje, znakStoga, stog)
             if tuple([stanje, slovo, znakStoga]) in self.funkPr.keys() or (tuple([stanje, "$", znakStoga]) in self.funkPr.keys() and not stog):
                 stanje, znakStoga = self.funkPr[tuple([stanje, slovo, znakStoga])] if not (tuple([stanje, "$", znakStoga]) in self.funkPr.keys() and not stog) else self.funkPr[tuple([stanje, "$", znakStoga])]
@@ -52,9 +48,7 @@ class Automat():
                 print("fail|0")
                 return
             print(stanje, "".join(stog[::-1]), sep="#", end="|") if stog else print(stanje, "$", sep="#", end="|")
-        if stanje not in self.prihvatS and stog:
-            znakStoga = stog.pop()
-            stanje, znakStoga, stog = self.provjeri_epsilon(stanje, znakStoga, stog) 
+        stanje, znakStoga, stog = self.provjeri_epsilon(stanje, stog.pop(), stog) if stanje not in self.prihvatS and stog else [stanje, znakStoga, stog]
         print(f"{1 if stanje in self.prihvatS else 0}")
         return
             
