@@ -17,7 +17,8 @@ int ukupno_uslo[2] = {0, 0};
 char linguz[] = "Linux";
 char microsoft[] = "Microsoft";
 
-void udi(int vrsta) {
+void udi(int vrsta) 
+{
     pthread_mutex_lock(&m);
     cekaju[vrsta]++;
 
@@ -31,7 +32,8 @@ void udi(int vrsta) {
     pthread_mutex_unlock(&m);
 }
 
-void izadi(int vrsta) {
+void izadi(int vrsta) 
+{
     pthread_mutex_lock(&m);
 
     trenutno_u_restoranu[vrsta]--;
@@ -42,7 +44,8 @@ void izadi(int vrsta) {
     pthread_mutex_unlock(&m);
 }
 
-void *programer(void *arg) {
+void *programer(void *arg) 
+{
     int vrsta = *(int *)arg;
     char name[10] = "";
 
@@ -59,8 +62,8 @@ void *programer(void *arg) {
     }
 }
 
-int main(void) {
-
+int main(void) 
+{
 	pthread_mutex_init (&m, NULL);
 	pthread_cond_init (&uvjet[0], NULL);
     pthread_cond_init (&uvjet[1], NULL);
