@@ -38,7 +38,7 @@ void posjetitelj(int n, int i)
 void vrtuljak(int n) 
 {
     while (1) {
-        printf("~Vlak se priprema za polazak\n");
+        printf("~Vrtuljak se priprema za polazak\n");
         for (int i = 0; i < n; i++) sem_post(sem1); //postavljaju se semafori za mjesta u vrtuljku
         for (int i = 0; i < n; i++) sem_wait(sem2); //čekaju se semafori potvrde da su zauzeta sva mjesta
         printf("->Vožnja je krenula\n");
