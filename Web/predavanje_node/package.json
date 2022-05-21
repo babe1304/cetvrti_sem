@@ -9,6 +9,8 @@
   "author": "Dominik",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^5.0.1",
+    "moment": "^2.29.3",
     "qrcode": "^1.5.0"
   }
 }
