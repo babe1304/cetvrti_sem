@@ -21,6 +21,7 @@ router.get('/', async (req, res, next) => {
     }
     
     res.render('order', {
+        title: 'Order',
         linkActive: 'order',
         categories: categories.rows,
         items: mapa

@@ -12,6 +12,7 @@ router.get('/:id([0-9]{1,10})', async (req, res, next) => {
     WHERE id = $1`, [item.categoryid])).rows[0];
 
     res.render('item', {
+        title: item.name,
         linkActive: 'order',
         item: item,
         category: category.name,
