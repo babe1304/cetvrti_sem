@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extended: true }));
 app.use('/', homeRouter);
-app.use('/items', itemRouter);
+app.use('/item', itemRouter);
 app.use('/order', orderRouter);
 
 

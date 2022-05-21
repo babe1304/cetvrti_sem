@@ -8,24 +8,31 @@
 <%- include(`partials/header`); %>
 
 <main class="main">
-
-    <!-- INSERT CODE HERE -->
-
-    <!-- POMOĆNI KOD
-        <div class="photo-box" data-id="1">
-            <img class="photo-box-image" src="https://i.imgur.com/Ttir6mp.jpg"></img>
-            <div class="photo-box-title font-secondary main-color-emphasized">
-                <a class="link" href="../item/1">Tulip</a>
+    <% for (let i in categories) {%>    
+    <section class="section <% if (i % 2 == 1) {%> primary-color-bg <%} else {%> secondary-color-bg <%}%>">
+        <div class="container">
+            <div class="centered-container">
+                <h1 class="decorated-title font-secondary main-color"><span
+                        class="main-color-emphasized"><%= categories[i].name %></span> Inventory</h1>
+                <div class="separator"></div>
             </div>
         </div>
-                    
-        <div class="photo-box" data-id="1">
-            <img class="photo-box-image" src="https://i.imgur.com/gH33WyT.jpg"></img>
-            <div class="photo-box-title font-secondary main-color-emphasized">
-                <a class="link" href="../item/2">Lavender</a>
-            </div>
-        </div> 
-    -->
+        <% if (items.get(categories[i].id).length == 0) {%>
+            <div class="centered-container"><h1 class="decorated-title font-secondary main-color">No items in inventory</h1></div>
+        <% } else { %>
+        <section class="gallery">
+            <% for (let item of items.get(categories[i].id)) { %>
+                <div class="photo-box" data-id="<%= item.id %>">
+                    <img class="photo-box-image" src="<%= item.imageurl %>"></img>
+                    <div class="photo-box-title font-secondary main-color-emphasized">
+                        <a class="link" href="../item/<%= item.id %>"><%= item.name %></a>
+                    </div>
+                </div>
+            <% } %>
+        </section>
+        <% } %>
+    </section>
+    <% } %>
 
 </main>
 
