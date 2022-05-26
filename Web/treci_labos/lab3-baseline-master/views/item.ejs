@@ -9,18 +9,26 @@
 
 <main class="main">
 
-        <div class="item-view">
+    <div class="container">
+        <div class="centered-container">
+            <h1 class="decorated-title font-secondary main-color"><span
+                    class="main-color-emphasized">Item</span> Information</h1>
+            <div class="separator"></div>
+        </div>
+    
+        <div class="item-view centered-container">
             <img class="item-view-image" src="<%= item.imageurl %>" alt="image of flowers"></img>
             <div class="item-view-text">
                 <div class="item-view-text-title font-secondary main-color-emphasized"><%= item.name %></div>
                 <hr>
                 <div class="item-view-text-property main-color">Price: <span class="item-view-text-value"><%= item.price %>kn</span></div>
                 <div class="item-view-text-property main-color">Available colors: <span class="item-view-text-value"><%= item.colors %></span></div>
-                <div class="item-view-text-property main-color">Category: <span class="item-view-text-value"><%= category %></span></div>
-                <div class="item-view-text-property main-color">Seasonal: <span class="item-view-text-value"><%= isSeasonal %></span></div>
-                <div class="item-view-text-desc font-secondary main-color">Flowers make us smile</div>
+                <div class="item-view-text-property main-color">Category: <span class="item-view-text-value"><%= category.name %></span></div>
+                <div class="item-view-text-property main-color">Seasonal: <span class="item-view-text-value"><%= category.seasonal %></span></div>
+                <div class="item-view-text-desc font-secondary main-color"><%= category.description %></div>
             </div>
         </div>
+    </div>
 
 </main>
 

@@ -10,12 +10,15 @@ router.get('/:id([0-9]{1,10})', async (req, res, next) => {
     WHERE id = $1`, [id])).rows[0];
     let category = (await db.query(`SELECT * FROM categories
     WHERE id = $1`, [item.categoryid])).rows[0];
+    let buyers = (await db.query(`SELECT * FROM buyers
+    WHERE buyerof = $1`, [item.id])).rows;
 
     res.render('item', {
         title: item.name,
         linkActive: 'order',
         item: item,
-        category: category
+        category: category,
+        buyers: buyers
     });
 });
 

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+
+<%- include(`partials/head`); %>
+
+<body class="content">
+
+<%- include(`partials/header`); %>
+
+<main class="main">
+    <% for (let i in categories) {%>    
+    <section class="section <% if (i % 2 == 1) {%> primary-color-bg <%} else {%> secondary-color-bg <%}%>">
+        <div class="container">
+            <div class="centered-container">
+                <h1 class="decorated-title font-secondary main-color"><span
+                        class="main-color-emphasized"><%= categories[i].name %></span> Inventory</h1>
+                <div class="separator"></div>
+            </div>
+        </div>
+        <% if (items.get(categories[i].id).length == 0) {%>
+            <div class="centered-container"><h1 class="decorated-title font-secondary main-color">No items in inventory</h1></div>
+        <% } else { %>
+        <section class="gallery">
+            <% for (let item of items.get(categories[i].id)) { %>
+                <div class="photo-box" data-id="<%= item.id %>">
+                    <img class="photo-box-image" src="<%= item.imageurl %>"></img>
+                    <div class="photo-box-title font-secondary main-color-emphasized">
+                        <a class="link" href="../item/<%= item.id %>"><%= item.name %></a>
+                    </div>
+                </div>
+            <% } %>
+        </section>
+        <% } %>
+    </section>
+    <% } %>
+
+</main>
+
+<%- include(`partials/footer`); %>
+
+</body>
+
+</html>

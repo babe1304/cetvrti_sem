@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<%- include(`partials/head`); %>
+
+<body class="content">
+
+<%- include(`partials/header`); %>
+
+<main class="main">
+
+	<!-- INSERT CODE HERE -->
+    <% locals.selectData = inventory; %>
+    
+    <div class="centered-container">
+        <h1 class="decorated-title font-secondary main-color">Update
+            <span class="main-color-emphasized"> Top Buyer</span></h1>
+        <div class="separator"></div>
+    </div>
+    <section class="section secondary-color-bg">
+        <div class="container">
+			<form action="/buyers/update-buyer/<%= buyer.id %>" method="POST">
+                <fieldset class="fieldset">
+                    <div class="label-input">
+                        <label for="name"> Buyer name: </label>
+                        <input type="text" name="name" id="name"  value="<%= buyer.name %>" required>
+                    </div>
+                    <div class="label-input">
+                        <label for="surname"> Buyer surname: </label>
+                        <input type="text" name="surname" id="surname" value="<%= buyer.surname %>" required>
+                    </div>
+                    <div class="label-input">
+                        <label for="country"> Country: </label>
+                        <input type="text" name="country" id="country" value="<%= buyer.country %>" required>
+                    </div>
+                    <div class="label-input">
+                        <label for="email"> E-mail: </label>
+                        <input name="email" type="text" class="form-control" value="<%= buyer.email %>" id="email" required>
+                        <!-- <input name="email" type="email" //size="30" class="form-control" value="<%= //buyer.email %>" id="email" required>-->
+                    </div>
+                    <div class="label-input">
+                        <label for="date"> Buyer since </label>
+                        <input type="number" name="year" id="year" step="1" value="<%= buyer.buyersince %>" required>
+                    </div>
+					<div class="label-input">
+                        <label for="buyerof">Top buyer for:</label>
+                        <%- include(`partials/_select`); %>
+                    </div>
+                    <hr>
+                    <div class="submitButtons">
+                        <input type="Submit" class="btn">
+                        <input type="Reset" class="btn" >
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </section>
+		
+</main>
+
+<%- include(`partials/footer`); %>
+
+</body>
+
+</html>
