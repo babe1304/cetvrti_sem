@@ -5,7 +5,8 @@ var {body, validationResult} = require('express-validator')
 
 router.get('/', async (req, res, next) => {
 
-    let buyers = (await db.query(`SELECT * FROM buyers`)).rows;
+    let buyers = (await db.query(`SELECT buyers.*, inventory.name AS itemName, categories.name AS categoryName FROM buyers JOIN inventory ON buyers.buyerof = inventory.id
+                                    JOIN categories ON inventory.categoryid = categories.id;`)).rows;
 
     res.render('buyers', {
         title: 'Buyers',
