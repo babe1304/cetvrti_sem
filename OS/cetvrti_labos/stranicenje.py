@@ -1,3 +1,4 @@
+#%%
 from random import randint
 from time import sleep
 
@@ -6,7 +7,7 @@ n, m = int(input()), int(input())
 okvir = {i : ['0' * 8 for _ in range(64)] for i in range(m)}
 tablica = { i : ['0' * 16 for _ in range(16)] for i in range(n)}
 disk = {i : [bin(randint(0, 256))[2:].zfill(8) for _ in range(16)] for i in range(n)}
-
+#%%
 t = 0
 for i in range(5):
     for proces in tablica.keys():
@@ -31,7 +32,7 @@ for i in range(5):
                     moguci_okviri.remove(int(redak[:10], 2)) if redak[10] == '1' else moguci_okviri
                     if redak[10] == '1' and int(redak[11:], 2) <= t and int(redak[11:], 2) < min_lru:
                         min_r, min_pr, min_n, min_lru = redak, pr, i, int(redak[11:], 2)
-                    redak = bin(int(redak, 2) & 0xFFE0) if t == 32 else redak 
+                    redak = bin(int(redak, 2) & 0xFFE0)[2:].zfill(16) if t == 32 else redak 
 
             if moguci_okviri:
                 br_okvira = bin(moguci_okviri.pop(0))[2:].zfill(10) 
@@ -58,6 +59,6 @@ for i in range(5):
         tablica[proces] = tab
         print(f'\tfiz. adresa: {hex(int(fiz_adr, 2))}')
         print(f'\tzapis tablice: {hex(int(tab[int(bin(x)[:6], 2)], 2))}')
-        print(f'\tsadržaj adrese: {hex(int(vrijednost,2))}')
+        print(f'\tsadržaj adrese: {int(vrijednost,2)}')
         t = 0 if t == 32 else t + 1
         sleep(1)
