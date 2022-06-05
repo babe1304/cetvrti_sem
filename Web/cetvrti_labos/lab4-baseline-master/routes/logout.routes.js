@@ -7,6 +7,11 @@ router.get('/', function (req, res, next) {
     // - odjaviti registriranog korisnika iz sustava
     // - napraviti redirect na osnovnu stranicu
 
+    req.session.user = undefined;
+    req.session.cart = undefined;
+
+    res.redirect('/');
+
     //#######################################################
 
 });

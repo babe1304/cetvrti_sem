@@ -27,15 +27,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 //middleware - dekodiranje parametara
 app.use(express.urlencoded({ extended: true }));
 
-//####################### ZADATAK #######################
-
 //pohrana sjednica u postgres bazu korštenjem connect-pg-simple modula
-//app.use(
-  
-//)
-
-//#######################################################
-
+app.use(session({
+    store: new pgSession({
+        pool: db.pool,
+        tableName: 'session'
+    }),
+    secret: 'FER WiM',
+    resave: false,
+    saveUninitialized: true
+}));
 
 //definicija ruta
 app.use('/', homeRouter);

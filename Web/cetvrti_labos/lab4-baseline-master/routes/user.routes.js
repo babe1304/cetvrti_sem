@@ -8,12 +8,13 @@ const authHandler = require('./helpers/auth-handler');
 // Ulančavanje funkcija međuopreme
 router.get('/', authHandler, function (req, res, next) {
     (async () => {
+        console.log('Inside func ' + req.session.user);
         //dobavi adresu korisnika
         let address = await Address.fetchByUser(req.session.user);
-
+        console.log(address);
         //dobavi narudžbe korisnika
         let orders = await Order.fetchByUser(req.session.user);
-
+        console.log(orders);
         res.render('user', {
             title: 'User profile',
             user: req.session.user,
