@@ -65,7 +65,7 @@ router.post('/', function (req, res, next) {
         // - ako je prijava uspjela, povezati sjednicu s registriranim korisnikom
         // - napraviti redirect na home stranicu
 
-        if (user.id !== undefined) req.session.user = user.email;
+        if (user.isPersisted()) req.session.user = user;
         res.redirect('/');
 
         //#######################################################

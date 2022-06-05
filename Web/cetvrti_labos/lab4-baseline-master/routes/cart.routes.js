@@ -26,15 +26,15 @@ router.get('/', cartSanitizer, function (req, res, next) {
 });
 
 
-router.get('/add/:id', function (req, res, next) {
+router.get('/add/:id', async function (req, res, next) {
     //####################### ZADATAK #######################
     //dodavanje jednog artikla u košaricu
 
     let itemId = parseInt(req.params.id);
 
-    cart.addItemToCart(req.session.cart, itemId, 1);
-    let sql = `INSERT INTO cart (user_id, inventory_id, items) VALUES ($1, $2, $3)`;
-    db.query(sql, [req.session.user.id, itemId, req.session.cart.items[itemId].quantity]);
+    await cart.addItemToCart(req.session.cart, itemId, 1);
+    /*let sql = `INSERT INTO cart (user_id, inventory_id, items) VALUES ($1, $2, $3)`;
+    db.query(sql, [req.session.user.id, itemId, req.session.cart.items[itemId].quantity]);*/
 
     res.render('cart', {
         title: 'cart',
@@ -48,12 +48,13 @@ router.get('/add/:id', function (req, res, next) {
 
 });
 
-router.get('/remove/:id', function (req, res, next) {
+router.get('/remove/:id', async function (req, res, next) {
     //####################### ZADATAK #######################
     //brisanje jednog artikla iz košarice
 
     let itemId = parseInt(req.params.id);
-    cart.removeItemFromCart(req.session.cart, itemId, 1);
+    await cart.removeItemFromCart(req.session.cart, itemId, 1);
+
     res.render('cart', {
         title: 'cart',
         cart: req.session.cart,

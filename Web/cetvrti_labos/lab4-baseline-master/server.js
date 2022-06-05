@@ -35,7 +35,8 @@ app.use(session({
     }),
     secret: 'FER WiM',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    max_age: 60 * 5
 }));
 
 //definicija ruta
