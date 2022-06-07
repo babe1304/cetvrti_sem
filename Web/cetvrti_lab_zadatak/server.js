@@ -16,6 +16,8 @@ const signupRoute = require('./routes/signup.routes');
 const cartRoute = require('./routes/cart.routes');
 const userRoute = require('./routes/user.routes');
 const checkoutRoute = require('./routes/checkout.routes');
+const onSiteRouter = require('./routes/on-site.routes');
+const { strictEqual } = require('assert');
 
 //middleware - predlošci (ejs)
 app.set('views', path.join(__dirname, 'views'));
@@ -50,6 +52,7 @@ app.use('/signup', signupRoute);
 app.use('/cart', cartRoute);
 app.use('/user', userRoute);
 app.use('/checkout', checkoutRoute);
+app.use('/view', onSiteRouter);
 
 
 //pokretanje poslužitelja na portu 3000

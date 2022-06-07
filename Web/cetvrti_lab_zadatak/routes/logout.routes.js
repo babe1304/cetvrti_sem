@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
 
     req.session.user = undefined;
     req.session.cart = undefined;
-    //req.session.destroy(err => console.log(err));
+    req.session.destroy(err => console.log(err));
 
     res.redirect('/');
 

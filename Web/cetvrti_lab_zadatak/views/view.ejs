@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="./images/flower-icon.png"/>
+    <link rel="stylesheet" type="text/css" href="./vendor/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./styles/main.css">
+    <script src="./scripts/main.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+
+</head>
+
+
+<body class="content">
+
+<%- include(`partials/header`); %>
+<main class="main">
+
+    <section class="section secondary-color-bg">
+        <div class="container">
+            <div class="centered-container">
+                <h1 class="decorated-title font-secondary main-color">
+                    <span class="main-color-emphasized">Delivery </span> options
+                </h1>
+                <form method="post" class="form gutter">
+                    <fieldset class="form-fieldset">
+                        <legend class="form-legend">Please fill in some delivery details</legend>
+
+
+                        <div class="form-group">
+                            <label class="form-label"
+                                   for="delivery-date"
+                            >
+                                When would you like to have your package delivered (dd.mm.yyyy.)?
+                            </label>
+
+                            <input class="form-input form-component"
+                                   type="text"
+                                   id="delivery-date"
+                                   name="delivery-date"
+                                    <%- `value="${helper.deliveryDate()}"` %>
+
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label"
+                                   for="address">
+                                What is your address?
+                            </label>
+                            <input class="form-input form-component"
+                                   type="text"
+                                   maxlength="40"
+                                   minlength="5"
+                                   id="address"
+                                   name="address"
+                                    <%- `value="${helper.address()}"` %>
+                            >
+                        </div>
+
+
+
+
+                        <label class="form-label">
+                            If you are not at home at the given date, where would you like your package delivered?
+                        </label>
+                        <div class="form-group">
+
+                            <% for (const val of helper.deliveryAlternativeValues()) { %>
+                                <input class="form-input-radio"
+                                       type="radio"
+                                       name="delivery-alternative"
+                                       id="<%- helper.stringToHTMLId(val) %>"
+                                       value="<%- val %>"
+                                        <%- helper.isDeliveryAlternativeSelected(val) %>
+                                >
+                                <label class="form-label"
+                                       for="<%- helper.stringToHTMLId(val) %>"
+                                ><%- val %></label>
+                            <% } %>
+
+                        </div>
+
+                        <input class="btn"
+                               type="submit"
+                               formaction="/view/save"
+                               value="Save and return to cart">
+                        <input class="btn"
+                               type="submit"
+                               formaction="/view/reset"
+                               value="Reset">
+                        <input class="btn push-right"
+                               type="submit"
+                               formaction="/view/checkout"
+                               value="Order now!">
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<%- include(`partials/footer`); %>
+
+</body>
+
+</html>
