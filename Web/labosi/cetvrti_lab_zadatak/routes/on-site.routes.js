@@ -4,7 +4,6 @@ const authHandler = require('./helpers/auth-handler');
 const Helper = require('./helpers/helper');
 const Order = require('../models/OrderModel');
 const Address = require('../models/AddressModel');
-const authHandler = require('./helpers/auth-handler');
 const cartExistence = require('./helpers/cart-existence');
 
 router.get('/', authHandler, (req, res, next) => {

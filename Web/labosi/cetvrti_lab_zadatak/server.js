@@ -38,9 +38,9 @@ app.use(session({
     secret: 'FER WiM',
     resave: false,
     saveUninitialized: true,
-    cookie: {
+    /*cookie: {
         maxAge: 60 * 5
-    }
+    }*/
 }));
 
 //definicija ruta
